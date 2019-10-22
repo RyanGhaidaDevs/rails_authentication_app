@@ -1,8 +1,9 @@
 class RegistrationsController < ApplicationController
-  
-  def create 
+
+  def create
+    byebug 
     user = User.create!(
-      email: params['user']['password'],
+      email: params['user']['email'],
       password: params['user']['password'],
       password_confirmation: params['user']['password_confirmation']
     )
@@ -18,4 +19,8 @@ class RegistrationsController < ApplicationController
     end 
   end 
 
+  def index
+    users = User.all
+    render json: {user: users}
+  end
 end
