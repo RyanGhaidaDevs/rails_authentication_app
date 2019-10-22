@@ -19,8 +19,4 @@ class RegistrationsController < ApplicationController
     end 
   end 
 
-  def index
-    users = User.all
-    render json: {user: users}
-  end
 end
