@@ -1,7 +1,6 @@
 class RegistrationsController < ApplicationController
 
-  def create
-    byebug 
+  def create 
     user = User.create!(
       email: params['user']['email'],
       password: params['user']['password'],
