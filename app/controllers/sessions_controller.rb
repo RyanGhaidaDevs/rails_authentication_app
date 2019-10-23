@@ -1,13 +1,12 @@
 class SessionsController < ApplicationController 
 include CurrentUserConcern
   def create 
-    byebug
     user = User.find_by(email: params["user"]["email"]).try(:authenticate, params["user"]["password"])
 
     if user 
       session[:user_id] = user.id
       render json: {
-        status: created,
+        status: "created",
         logged_in: true,
         user: user 
       }
