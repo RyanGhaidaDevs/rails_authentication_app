@@ -17,8 +17,8 @@ include CurrentUserConcern
   end 
 
   def logout
-    reset_session 
-    render json: {status: 200, logged_out: true}
+    session.clear
+    render json: {status: 200, logged_out: true, logged_in: false}
   end 
   
   def logged_in
@@ -28,7 +28,7 @@ include CurrentUserConcern
         user: @current_user
       }
     else 
-      render json: {logged_in: false, }
+      render json: {logged_in: false}
     end 
   end 
 end 
