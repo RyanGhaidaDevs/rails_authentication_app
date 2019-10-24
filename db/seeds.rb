@@ -8,3 +8,4 @@
 
 user = User.last
 log1 = Log.create(user_id: user.id, title: "first bug", languages: "ruby, rails, react", key_words_bug: "associations, backend, instance creation", key_words_solution: "", solved: false)
+log2 = Log.create(user_id: user.id, title: "second bug", languages: "react router", key_words_bug: "session passing", key_words_solution: "", solved: false)
