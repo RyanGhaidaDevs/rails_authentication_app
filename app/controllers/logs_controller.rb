@@ -7,7 +7,6 @@ class LogsController < ApplicationController
   end 
 
   def create
-    byebug
     @log = Log.create(logs_params)
     render json: {log: @log}
   end 
