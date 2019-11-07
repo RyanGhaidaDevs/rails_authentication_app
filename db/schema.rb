@@ -10,18 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_24_162725) do
+ActiveRecord::Schema.define(version: 2019_11_07_182715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "logs", force: :cascade do |t|
     t.integer "user_id"
-    t.string "title"
-    t.string "languages"
-    t.string "key_words_bug"
-    t.string "key_words_solution"
-    t.boolean "solved", default: false
+    t.string "bugTitle"
+    t.string "bugDescription"
+    t.string "languagesInvolved"
+    t.string "links"
+    t.string "notes"
+    t.string "solution"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
