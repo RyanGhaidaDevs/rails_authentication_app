@@ -5,5 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Log.destroy_all
 
-user = User.last
+user = User.create(email: "ryaboug@gmail.com", password: "Lebanon1", password_confirmation: "Lebanon1")
+log = Log.create(bugTitle: "first Log", bugDescription: "desc.", languagesInvolved: "js,ruby", links: "a,b,c", solution: "x,y,z", notes: "notes here", user_id: user.id )

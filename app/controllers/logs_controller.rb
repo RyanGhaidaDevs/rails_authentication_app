@@ -1,15 +1,16 @@
 class LogsController < ApplicationController
   def index 
-    byebug
+  
     @user = User.find(session["user_id"])
     @user_logs = @user.logs
     render json: {user_logs: @user_logs}
+  
+  
   end 
 
   def create
     params = logs_params
     params[:user_id] = session["user_id"]
-    byebug
     @log = Log.create(params)
     render json: {log: @log}
   end 
