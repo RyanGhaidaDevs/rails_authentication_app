@@ -7,7 +7,10 @@ class LogsController < ApplicationController
   end 
 
   def create
-    @log = Log.create(logs_params)
+    params = logs_params
+    params[:user_id] = session["user_id"]
+    byebug
+    @log = Log.create(params)
     render json: {log: @log}
   end 
 
@@ -18,6 +21,6 @@ class LogsController < ApplicationController
   private 
  
   def logs_params 
-    params.require(:user).permit(:title, :languages,key_words_bug, :key_words_solution, :solved )
+    params.require(:user).permit(:bugTitle, :bugDescription, :languagesInvolved, :links, :solution,:notes, :user_id )
   end 
 end
