@@ -1,11 +1,24 @@
 class LogsController < ApplicationController
-  def index 
-  
-    @user = User.find(session["user_id"])
-    @user_logs = @user.logs
-    render json: {user_logs: @user_logs}
-  
-  
+  include CurrentUserConcern
+
+  # def index 
+  #   if @current_user 
+  #     render json: {
+  #       logs: @current_user.logs
+  #     }
+  #   else 
+      
+  #     x = User.last
+  #     render json: {
+  #       logs: x.logs
+  #     }
+  #   end 
+  # end 
+
+  def show
+    session["init"] = true 
+    user = User.find(session["user_id"])
+    render json: {logs: user.logs}
   end 
 
   def create
@@ -15,9 +28,6 @@ class LogsController < ApplicationController
     render json: {log: @log}
   end 
 
-  def delete
-    
-  end
 
   private 
  
