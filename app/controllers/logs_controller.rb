@@ -28,10 +28,18 @@ class LogsController < ApplicationController
     render json: {log: @log}
   end 
 
+  def destroy 
+   @log = Log.find(logs_params[:id])
+   user_id = @log.user_id
+   @log.destroy
+   user = User.find(user_id)
+   render json: {logs: user.logs}
+  end 
+
 
   private 
  
   def logs_params 
-    params.require(:user).permit(:bugTitle, :bugDescription, :languagesInvolved, :links, :solution,:notes, :user_id )
+    params.require(:user).permit(:bugTitle, :bugDescription, :languagesInvolved, :links, :solution,:notes, :user_id, :id, :log )
   end 
 end

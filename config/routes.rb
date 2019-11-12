@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :registrations, only: [:create, :index]
   get :logs, to: "logs#show"
   post :logs, to: "logs#create"
+  delete :logs, to: "logs#destroy"
   delete :logout, to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"
 
