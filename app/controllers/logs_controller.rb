@@ -28,6 +28,14 @@ class LogsController < ApplicationController
     render json: {log: @log}
   end 
 
+  def edit 
+    @log = Log.find(logs_params["id"])
+    byebug
+    # find user, update his log with params, render json of his logs 
+    # @log.update(logs_params)
+
+  end 
+
   def destroy 
    @log = Log.find(logs_params[:id])
    user_id = @log.user_id
