@@ -30,10 +30,11 @@ class LogsController < ApplicationController
 
   def edit 
     @log = Log.find(logs_params["id"])
-    byebug
+    
     # find user, update his log with params, render json of his logs 
-    # @log.update(logs_params)
-
+    @log.update(logs_params)
+    @log.save
+    render json: {log: @log}
   end 
 
   def destroy 
@@ -48,6 +49,6 @@ class LogsController < ApplicationController
   private 
  
   def logs_params 
-    params.require(:user).permit(:bugTitle, :bugDescription, :languagesInvolved, :links, :solution,:notes, :user_id, :id, :log )
+    params.require(:user).permit(:bugTitle, :bugDescription, :languagesInvolved, :links, :solution, :notes, :user_id, :id, :log )
   end 
 end
