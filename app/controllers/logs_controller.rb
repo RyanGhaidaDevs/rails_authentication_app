@@ -1,20 +1,6 @@
 class LogsController < ApplicationController
   include CurrentUserConcern
 
-  # def index 
-  #   if @current_user 
-  #     render json: {
-  #       logs: @current_user.logs
-  #     }
-  #   else 
-      
-  #     x = User.last
-  #     render json: {
-  #       logs: x.logs
-  #     }
-  #   end 
-  # end 
-
   def show
     session["init"] = true 
     user = User.find(session["user_id"])
