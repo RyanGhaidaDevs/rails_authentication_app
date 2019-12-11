@@ -2,16 +2,21 @@ class LogsController < ApplicationController
   include CurrentUserConcern
 
   def show
+
     session["init"] = true 
     user = User.find(session["user_id"])
-    render json: {logs: user.logs}
+    projectsArray = [] 
+    logsArr = []
+    projectsArray = user.projects.select{|p| p.logs.size > 0 }
+    @logs = projectsArray.map {|p| logsArr.push(p.logs)}
+    @logs = @logs.flatten()
+    render json: {logs: @logs }
   end 
 
   def create
-    byebug
     params = logs_params
-    params[:user_id] = session["user_id"]
     @log = Log.create(params)
+    byebug
     render json: {log: @log}
   end 
 
@@ -36,6 +41,6 @@ class LogsController < ApplicationController
   private 
  
   def logs_params 
-    params.require(:user).permit(:bugTitle, :bugDescription, :languagesInvolved, :links, :solution, :notes, :user_id, :id, :log )
+    params.require(:user).permit(:bugTitle, :bugDescription, :languagesInvolved, :links, :solution, :notes, :id, :log, :project_id )
   end 
 end
