@@ -2,7 +2,6 @@ class LogsController < ApplicationController
   include CurrentUserConcern
 
   def show
-
     session["init"] = true 
     user = User.find(session["user_id"])
     projectsArray = [] 
@@ -16,7 +15,6 @@ class LogsController < ApplicationController
   def create
     params = logs_params
     @log = Log.create(params)
-    byebug
     render json: {log: @log}
   end 
 
@@ -30,11 +28,12 @@ class LogsController < ApplicationController
   end 
 
   def destroy 
+    # find project id then delete log
    @log = Log.find(logs_params[:id])
-   user_id = @log.user_id
+   project_id = @log.project_id
    @log.destroy
-   user = User.find(user_id)
-   render json: {logs: user.logs}
+   @project = Project.find(project_id)
+   render json: {logs: @project.logs}
   end 
 
 
