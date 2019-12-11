@@ -2,14 +2,14 @@ class ProjectsController < ApplicationController
   include CurrentUserConcern
 
   def show
-    byebug
+    
     session["init"] = true 
     user = User.find(session["user_id"])
     render json: {projects: user.projects}
   end 
 
   def create
-    byebug
+    
     params = project_params
     params[:user_id] = session["user_id"]
     @project = Project.create(params)

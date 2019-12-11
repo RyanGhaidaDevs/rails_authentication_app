@@ -8,6 +8,7 @@ class LogsController < ApplicationController
   end 
 
   def create
+    byebug
     params = logs_params
     params[:user_id] = session["user_id"]
     @log = Log.create(params)
