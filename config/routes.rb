@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :registrations, only: [:create, :index]
 
+  get :alllogs, to: "logs#index"
   get :logs, to: "logs#show"
   post :logs, to: "logs#create"
   patch :logs, to: "logs#edit"

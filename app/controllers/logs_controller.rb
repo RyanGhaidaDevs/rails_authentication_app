@@ -1,6 +1,11 @@
 class LogsController < ApplicationController
   include CurrentUserConcern
 
+  def index 
+    @logs = Log.all 
+    render json: {logs: @logs}
+  end 
+
   def show
     session["init"] = true 
     user = User.find(session["user_id"])
