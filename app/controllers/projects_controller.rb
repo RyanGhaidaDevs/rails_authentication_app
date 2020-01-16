@@ -27,8 +27,7 @@ class ProjectsController < ApplicationController
   end 
 
   def destroy 
-    byebug
-   @project = project.find(project_params[:id])
+   @project = Project.find(project_params[:id])
    user_id = @project.user_id
    @project.destroy
    user = User.find(user_id)
