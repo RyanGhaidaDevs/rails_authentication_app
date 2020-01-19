@@ -5,7 +5,10 @@ class ProjectsController < ApplicationController
     
     session["init"] = true 
     user = User.find(session["user_id"])
-    render json: {projects: user.projects}
+    @projects = user.projects
+    # render json: {projects: @projects}
+    render :json =>  @projects.to_json(include: :logs)
+
   end 
 
   def create
