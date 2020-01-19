@@ -45,6 +45,6 @@ class LogsController < ApplicationController
   private 
  
   def logs_params 
-    params.require(:user).permit(:bugTitle, :bugDescription, :languagesInvolved, :links, :solution, :notes, :id, :log, :project_id )
+    params.require(:user).permit(:bugTitle, :bugDescription, :languagesInvolved, :links, :solution, :notes, :id, :log, :project_id, :user_id)
   end 
 end
