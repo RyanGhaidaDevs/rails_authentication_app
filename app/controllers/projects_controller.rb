@@ -34,7 +34,8 @@ class ProjectsController < ApplicationController
    user_id = @project.user_id
    @project.destroy
    user = User.find(user_id)
-   render json: {projects: user.projects}
+   @projects = user.projects
+   render :json =>  @projects.to_json(include: :logs)
   end 
 
 
