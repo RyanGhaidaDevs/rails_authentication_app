@@ -5,4 +5,9 @@ class User < ApplicationRecord
   validates_uniqueness_of :email 
   
   has_many :projects, dependent: :destroy 
+
+
+  def logs 
+    self.projects.map{|project| project.logs }.flatten()
+  end 
 end

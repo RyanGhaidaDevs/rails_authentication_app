@@ -9,11 +9,7 @@ class LogsController < ApplicationController
   def show
     session["init"] = true 
     user = User.find(session["user_id"])
-    projectsArray = [] 
-    logsArr = []
-    projectsArray = user.projects.select{|p| p.logs.size > 0 }
-    @logs = projectsArray.map {|p| logsArr.push(p.logs)}
-    @logs = @logs.flatten()
+    @logs = user.logs
     render json: {logs: @logs }
   end 
 
