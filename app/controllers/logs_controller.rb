@@ -25,7 +25,8 @@ class LogsController < ApplicationController
     @log.save
     @user = User.find(@log.user_id)
     @logs = @user.logs
-    render json: {logs: @logs }
+    @allLogs = Log.all
+    render json: {logs: @logs, allLogs: @allLogs }
   end 
 
   def edit 
