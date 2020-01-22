@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get :logs, to: "logs#show"
   post :logs, to: "logs#create"
   patch :logs, to: "logs#edit"
+  patch :logLikes, to: "logs#likes"
   delete :logs, to: "logs#destroy"
 
   get :projects, to: "projects#show"
