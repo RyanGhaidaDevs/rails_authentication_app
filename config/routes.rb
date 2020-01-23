@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch :logLikes, to: "logs#likes"
   delete :logs, to: "logs#destroy"
 
+
   get :projects, to: "projects#show"
   post :projects, to: "projects#create"
   patch :projects, to: "projects#edit"
