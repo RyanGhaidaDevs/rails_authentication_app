@@ -43,8 +43,8 @@ class LogsController < ApplicationController
    @log = Log.find(logs_params[:id])
    project_id = @log.project_id
    @log.destroy
-   @project = Project.find(project_id)
-   render json: {logs: @project.logs}
+   @logs = Log.all
+   render json: {logs: @logs}
   end 
 
 
