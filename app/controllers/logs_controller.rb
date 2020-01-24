@@ -19,8 +19,6 @@ class LogsController < ApplicationController
     render json: {log: @log}
   end 
 
-
-
   def likes
     @log = Log.find(logs_params["id"])
     @log.likes = @log.likes+logs_params["likes"]
