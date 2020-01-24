@@ -9,7 +9,6 @@ class ProjectsController < ApplicationController
   end 
 
   def create
-    
     params = project_params
     params[:user_id] = session["user_id"]
     @project = Project.create(params)
@@ -17,9 +16,7 @@ class ProjectsController < ApplicationController
   end 
 
   def edit 
-    byebug
     @project = Project.find(project_params["id"])
-    
     # find user, update his log with params, render json of his logs 
     @project.update(project_params)
     @project.save
