@@ -1,24 +1,29 @@
-# README
+# BugLogger API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the backend for my Full-stack CRUD app built for bug logging and searching. I built this app for fun and to practice integrating a Ruby on Rails  API with a React project. 
 
-Things you may want to cover:
+### Functionality
 
-* Ruby version
+App has full user authentication and authorization via Rails' in-built sessions. 
 
-* System dependencies
+A User can create a project and then add bug logs for that particular project; CRUD functionality allows a User to edit, delete and search their logs. 
 
-* Configuration
+A User can also view the logs of other Users and leave an 'upvote' or 'downvote' -  User cannot rate their own logs. 
 
-* Database creation
+A User can search via keywords their own logs and that of other users. 
 
-* Database initialization
+### Technologies 
 
-* How to run the test suite
+## FrontEnd
 
-* Services (job queues, cache servers, search engines, etc.)
+React 
+React-Router verison: 4.3.1
+Material UI 
+Axios 
 
-* Deployment instructions
 
-* ...
+## Backend 
+
+Ruby version: 2.6.5
+Rails version: 6 
+
