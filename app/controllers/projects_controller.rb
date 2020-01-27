@@ -2,11 +2,8 @@ class ProjectsController < ApplicationController
   include CurrentUserConcern
 
   def show
-    # session["init"] = true 
-    # user = User.find(session["user_id"])
-    params = project_params
-    
-    user = User.find(params[:user_id])
+    session["init"] = true 
+    user = User.find(session["user_id"])
     @projects = user.projects
     render :json =>  @projects.to_json(include: :logs)
   end 
@@ -39,7 +36,7 @@ class ProjectsController < ApplicationController
   private 
  
   def project_params 
-    params.permit(:name, :id, :user_id)
+    params.require(:user).permit(:name, :id, :user_id)
   end 
 
 end
