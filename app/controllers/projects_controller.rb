@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   def show
     session["init"] = true 
-    user = User.find(session["user_id"])
+    user = User.find(session[:user_id])
     @projects = user.projects
     render :json =>  @projects.to_json(include: :logs)
   end 
