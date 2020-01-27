@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
 
   def create
     params = project_params
-    params[:user_id] = session["user_id"]
+    # params[:user_id] = session["user_id"]
     @project = Project.create(params)
     render json: {project: @project}
   end 
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
   private 
  
   def project_params 
-    params.require(:user).permit(:name, :id)
+    params.require(:user).permit(:name, :id, :user_id)
   end 
 
 end
