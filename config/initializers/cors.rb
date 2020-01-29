@@ -8,7 +8,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   end 
   #url for app below
   allow do 
-    origins "https://bugloggerapp.herokuapp.com"
+    origins "bugloggerapp.herokuapp.com"
     resource "*", headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head], credentials: true 
   end 
 end 
